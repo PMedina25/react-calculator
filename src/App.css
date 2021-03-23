@@ -5,6 +5,7 @@
   --clear-key-background-color: #ac3939;
   --operation-key-background-color: #666666;
   --equals-key-background-color: #004466;
+  --result-color: #d6a500;
 }
 
 html {
@@ -26,14 +27,41 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Likely future */
 }
 
 #calculator {
   position: relative;
-  width: 350px;
-  height: 400px;
+  width: 325px;
+  height: 380px;
   background-color: var(--calculator-background-color);
 }
+
+/**
+ * Display
+ */
+#display {
+  position: absolute;
+  top: 2rem;
+  right: 5px;
+  font-size: 1.25rem;
+  color: white;
+}
+
+#result {
+  position: absolute;
+  top: 0.5rem;
+  right: 5px;
+  color: var(--result-color);
+}
+
+/**
+ * Keys
+ */
 
 #keys-grid-area {
   position: absolute;
@@ -42,7 +70,7 @@ body {
   left: 0;
   display: grid;
   grid-template-columns: auto auto auto auto;
-  grid-gap: 1px;
+  gap: 1px;
   margin: 5px;
   font-size: 1.2rem;
   font-weight: 500;
@@ -54,6 +82,13 @@ body {
   justify-content: center;
   color: white;
   padding: 1.25rem 1rem;
+}
+
+.key:hover {
+  color: black;
+  padding: 15px;
+  transform: scale(1.01);
+  border: 1px solid gray;
 }
 
 .number-key {

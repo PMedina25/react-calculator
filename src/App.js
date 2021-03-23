@@ -4,6 +4,8 @@ import "./App.css";
 /**
  * Import components
  */
+import Result from './components/Result';
+import Display from './components/Display';
 import NumberKey from './components/NumberKey';
 import ClearKey from './components/ClearKey';
 import OperationKey from './components/OperationKey';
@@ -27,6 +29,11 @@ const App = () => {
   return (
     <>
       <div id="calculator">
+
+        <Result />
+
+        <Display />
+
         <div id="keys-grid-area">
 
           <ClearKey />
