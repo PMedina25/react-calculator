@@ -29,12 +29,17 @@ body {
 }
 
 #calculator {
+  position: relative;
   width: 350px;
-  height: 450px;
+  height: 400px;
   background-color: var(--calculator-background-color);
 }
 
 #keys-grid-area {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-gap: 1px;
@@ -87,4 +92,17 @@ body {
 #equals {
   background-color: var(--equals-key-background-color);
   grid-area: 4 / 4 / span 2 / span 1;
+}
+
+/**
+ * Footer
+ */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer p {
+  margin-bottom: 5px;
 }
