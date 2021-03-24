@@ -1,10 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addOperand } from '../store/actions/calculator';
 
 const NumberKey = (props) => {
+    const dispatch = useDispatch();
+
+    const introduceNumber = () => {
+        dispatch(addOperand(props.numberKey));
+    };
+
     return (
-        <div id={props.identificator} className="key number-key">
+        <a id={props.identificator} className="key number-key" onClick={introduceNumber}>
             {props.numberKey}
-        </div>
+        </a>
     );
 };
 

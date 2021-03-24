@@ -9,7 +9,7 @@ export const OPERATION_KEYS = [
     },
     {
         id: 'multiply',
-        operation: 'x'
+        operation: '*'
     },
     {
         id: 'divide',
