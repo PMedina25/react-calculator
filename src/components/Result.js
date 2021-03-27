@@ -6,7 +6,7 @@ const Result = () => {
 
     return (
         <div id="result">
-            {result}
+            <span>{result}</span>
         </div>
     );
 };

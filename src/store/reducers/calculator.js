@@ -6,7 +6,7 @@ import {
 } from '../types';
 
 const initialState = {
-    display: 0,
+    display: '0',
     result: null,
     isCalculated: false
 };
@@ -19,7 +19,7 @@ export const calculatorReducer = (state = initialState, action) => {
     switch (action.type) {
         case CLEAR:
             return {
-                display: 0,
+                display: '0',
                 result: null,
                 isCalculated: false
             };
@@ -28,30 +28,37 @@ export const calculatorReducer = (state = initialState, action) => {
             const currentDisplayValue = state.display;
 
             /* We concatenate the current value of the display with the digit introduce  */
-            let displayValue = currentDisplayValue.toString() + action.payload.toString();
+            let displayValue = currentDisplayValue + action.payload;
 
             /* If the display value is 0 or an operation, replace it with the first digit of the operand */
-            if (currentDisplayValue === 0 || isOperation(currentDisplayValue)) {
-                displayValue = action.payload.toString();
+            if (currentDisplayValue === '0' || isOperation(currentDisplayValue)) {
+                displayValue = action.payload;
             }
 
-            /* If the number of digits reach 22, it stops adding numbers to the operand */
-            if (displayValue.length >= 22) {
-                displayValue = currentDisplayValue.toString();
-            } 
-
             /* We save the result value, concatenating the previous value with the new one introduced */
-            let result = state.result + action.payload.toString();
+            let result = state.result + action.payload;
+
+            /* If the result value is a 0, we replace it with the number introduced */
+            if (state.result === '0') {
+                result = action.payload;
+            } 
 
             /* If the result is null, we put directly the value introduced */
             if (state.result === null) {
                 result = action.payload;
             }
 
+            /* If the number showed is the calculated one, we clear the display and the result */
             if (state.isCalculated) {
                 displayValue = action.payload;
                 result = action.payload;
             }
+
+            /* If the number of digits reach 22, it stops adding numbers to the operand */
+            if (displayValue.length >= 23 && !state.isCalculated) {
+                displayValue = currentDisplayValue;
+                result = state.result;
+            } 
 
             return {
                 ...state,

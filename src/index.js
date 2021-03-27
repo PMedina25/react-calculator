@@ -8,7 +8,7 @@ import App from "./App.js";
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <App />   
     </Provider>, 
     document.getElementById("root")
 );
